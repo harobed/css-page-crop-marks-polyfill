@@ -11,7 +11,7 @@ Enable [css-page-cross-marks-polyfill.js](css-page-cross-marks-polyfill.js) in y
 </head>
 ```
 
-Note: this page cross marks are only used to create your design, remote it before publish your stuff.
+Note: use page cross marks only to create your design, remove it before publish your stuff.
 
 ## Enable print media CSS
 
