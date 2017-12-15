@@ -14,7 +14,14 @@ document.addEventListener('DOMContentLoaded', function() {
   document.body.appendChild(wrapper);
   for(var i=0; i < 10; i++) {
     var page = document.createElement('div');
+    page.className = "page";
     page.style.cssText = "position: absolute; top: calc("+ i + " * (" + page_height + " - (" + page_margin + " * 2))); left: 0; border: 1px dashed #333; height: calc(" + page_height + " - (" + page_margin + " * 2)); width: calc(" + page_width + " - (" + page_margin + " * 2));"
     wrapper.appendChild(page);
+  }
+
+  page_breaks = document.querySelectorAll(".page-break");
+  pages = document.querySelectorAll(".page");
+  for(var i=0; i < page_breaks.length; i++) {
+    page_breaks[i].style.cssText = "padding-top:" + (pages[i + 1].getBoundingClientRect().y - page_breaks[i].getBoundingClientRect().y) + "px"
   }
 }, false);
