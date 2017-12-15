@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+
   function getParam(name) {
     elements = document.querySelector("*[data-" + name + "]");
     if (elements) {
@@ -19,9 +20,13 @@ document.addEventListener('DOMContentLoaded', function() {
     wrapper.appendChild(page);
   }
 
-  page_breaks = document.querySelectorAll(".page-break");
-  pages = document.querySelectorAll(".page");
-  for(var i=0; i < page_breaks.length; i++) {
-    page_breaks[i].style.cssText = "padding-top:" + (pages[i + 1].getBoundingClientRect().y - page_breaks[i].getBoundingClientRect().y) + "px"
+  function computeBreakPage() {
+    page_breaks = document.querySelectorAll(".page-break");
+    pages = document.querySelectorAll(".page");
+    for(var i=0; i < page_breaks.length; i++) {
+      page_breaks[i].style.cssText = "padding-top:" + (pages[i + 1].getBoundingClientRect().y - page_breaks[i].getBoundingClientRect().y) + "px"
+    }
   }
+  computeBreakPage();
+  window.matchMedia("print").addListener(function() {computeBreakPage();})
 }, false);
